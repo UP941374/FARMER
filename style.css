@@ -13,7 +13,7 @@ body{
   grid-template-areas:
     "P1 . . . P2"
 
-    ". D1 . D2 ."
+    ". D1 D2 R ."
 
     "P3 . . . P4"
 }
@@ -31,14 +31,40 @@ body{
     grid-area: P4;  border: solid;
 }
 .D1 {
-    grid-area: D1;  border: solid;
+  grid-area: D1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .D2 {
-    grid-area: D2;  border: solid;
+  grid-area: D2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.R {
+  grid-area: R;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
-  font-size: 12px;
+  font-size: 16px;
   padding: 0;
+}
+
+.button {
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+
+.player{
+  font-size: 25px;
 }

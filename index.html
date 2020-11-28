@@ -8,7 +8,7 @@
 <body>
   <div class="grid-container">
     <div class="P1">
-     Player: <span id="p1name" ></span><p>
+     Player: <span class='player' id="p1name" ></span><p>
      Rabbit:  <span id="p1r" ></span><p>
      Sheep:  <span id="p1s" ></span><p>
      Pig: <span id="p1p" ></span><p>
@@ -18,7 +18,7 @@
      Big Dog: <span id="p1bd" ></span><p>
     </div>
     <div class="P2">
-     Player:  <span id="p2name" ></span><p>
+     Player:  <span class='player' id="p2name" ></span><p>
      Rabbit:  <span id="p2r" ></span><p>
      Sheep:  <span id="p2s" ></span><p>
      Pig: <span id="p2p" ></span><p>
@@ -28,7 +28,7 @@
      Big Dog: <span id="p2bd" ></span><p>
     </div>
     <div class="P3">
-     Player:  <span id="p3name" ></span><p>
+     Player:  <span class='player' id="p3name" ></span><p>
      Rabbit:  <span id="p3r" ></span><p>
      Sheep:  <span id="p3s" ></span><p>
      Pig: <span id="p3p" ></span><p>
@@ -38,7 +38,7 @@
      Big Dog: <span id="p3bd" ></span><p>
     </div>
     <div class="P4">
-     Player:  <span id="p4name" ></span><p>
+     Player:  <span class='player' id="p4name" ></span><p>
      Rabbit:  <span id="p4r" ></span><p>
      Sheep:  <span id="p4s" ></span><p>
      Pig: <span id="p4p" ></span><p>
@@ -47,8 +47,9 @@
      Small Dog: <span id="p4sd" ></span><p>
      Big Dog: <span id="p4bd" ></span><p>
     </div>
-    <div class="D1"> DICE </div>
-    <div class="D2"> THROW </div>
+    <div class="D1"><span id="dice1"> </span></div>
+    <div class="D2"><span id="dice2"> </span></div>
+    <div class="R">  <button class= 'button' id='btnrolldice' onclick="rolldice()">ROLL</button>   <button class= 'button' id='btnendround' onclick="endround()" disabled>END ROUND</button>   </div>
   </div>
 
 </body>
