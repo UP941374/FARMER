@@ -1,6 +1,6 @@
-let sv=0;
-let foxonly=false;
-let wolfonly=false;
+let sv=0; //starting animal value
+let foxonly=false; //play with fox-only dice
+let wolfonly=false; //play with wolf-only dice
 
 let p1 = [n='Arek',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
 let p2 = [n='Julia',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
