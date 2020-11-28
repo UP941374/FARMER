@@ -127,12 +127,12 @@ function parseroll(player,res){
   let res2 = res.d2;
   let animal = 0;
 
-  if (res1 === 'w' && findanimals(player,'bg') >= 0) {
+  if (res1 === 'w' && findanimals(player,'bg') >= 1) {
     addanimal(player,'bg',-1);
     return;
   }
 
-  if (res2 === 'f' && findanimals(player,'sd') >= 0) {
+  if (res2 === 'f' && findanimals(player,'sd') >= 1) {
     addanimal(player,'sd',-1);
     return;
   }
