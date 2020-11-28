@@ -1,12 +1,24 @@
-let p1 = [n='Arek',r=0,s=0,p=0,c=0,h=0,sd=0,bg=0];
-let p2 = [n='Julia',r=0,s=0,p=0,c=0,h=0,sd=0,bg=0];
-let p3 = [n='Kamil',r=0,s=0,p=0,c=0,h=0,sd=0,bg=0];
-let p4 = [n='Ola',r=0,s=0,p=0,c=0,h=0,sd=0,bg=0];
+let sv=0;
+let foxonly=false;
+let wolfonly=false;
+
+let p1 = [n='Arek',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
+let p2 = [n='Julia',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
+let p3 = [n='Kamil',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
+let p4 = [n='Ola',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
 
 let turn = 1;
 
-const dice1 = ['r','r','r','r','r','r','s','s','s','p','c','w'];
-const dice2 = ['r','r','r','r','r','r','s','s','p','p','h','f'];
+let dice1 = ['r','r','r','r','r','r','s','s','s','p','c','w'];
+let dice2 = ['r','r','r','r','r','r','s','s','p','p','h','f'];
+
+if (foxonly === true) {
+  dice2 = ['f','f','f','f','f','f','f','f','f','f','f','f']
+}
+
+if (wolfonly === true) {
+  dice1 = ['w','w','w','w','w','w','w','w','w','w','w','w']
+}
 
 function displayvalues(){
   let l = document.querySelectorAll('span')
@@ -113,22 +125,147 @@ function nextplayer(x){
 function parseroll(player,res){
   let res1 = res.d1;
   let res2 = res.d2;
+  let animal = 0;
+
+  if (res1 === 'w' && findanimals(player,'bg') >= 0) {
+    addanimal(player,'bg',-1);
+    return;
+  }
+
+  if (res2 === 'f' && findanimals(player,'sd') >= 0) {
+    addanimal(player,'sd',-1);
+    return;
+  }
+
+  if (res1 === 'w') {
+    addanimal(player,'r',-findanimals(player,'r'))
+    addanimal(player,'s',-findanimals(player,'s'))
+    addanimal(player,'p',-findanimals(player,'p'))
+    addanimal(player,'c',-findanimals(player,'c'))
+  }
+
+  if (res2 ==='f') {
+    addanimal(player,'r',-findanimals(player,'r'))
+  }
 
   if (res1 === res2) {
     if (res1 ==='r') {
-      addanimal(turn,res1,1)
+      addanimal(turn,res1,1+Math.floor(findanimals(player,'r')/2));
+      return;
     }
     if (res1 ==='s') {
-      addanimal(turn,res1,1)
+      addanimal(turn,res1,1+Math.floor(findanimals(player,'s')/2));
+      return;
     }
     if (res1 ==='p') {
-      addanimal(turn,res1,1)
-    }
-    if (res1 ==='c') {
-      addanimal(turn,res1,1)
+      addanimal(turn,res1,1+Math.floor(findanimals(player,'p')/2));
+      return;
     }
   }
+
+   if (res1 === 'r' || res2 ==='r') {
+     animal = findanimals(player,'r');
+     addanimal(turn,'r', Math.floor((animal+1)/2));
+   };
+
+   if (res1 === 's' || res2 ==='s') {
+    animal = findanimals(player,'s');
+    addanimal(turn,'s', Math.floor((animal+1)/2));
+  };
+
+  if (res1 === 'p' || res2 ==='p') {
+   animal = findanimals(player,'p');
+   addanimal(turn,'p', Math.floor((animal+1)/2));
+  };
+
+  if (res1 === 'c' || res2 ==='c') {
+   animal = findanimals(player,'c');
+   addanimal(turn,'c', Math.floor((animal+1)/2));
+  };
+
+  if (res1 === 'h' || res2 ==='h') {
+   animal = findanimals(player,'h');
+   addanimal(turn,'h', Math.floor((animal+1)/2));
+  };
+
 };
+
+function findanimals(player,animal){
+  switch (player) {
+    case 1:
+      switch (animal) {
+        case 'r': return p1[1];
+        break;
+        case 's': return p1[2];
+        break;
+        case 'p': return p1[3];
+        break;
+        case 'c': return p1[4];
+        break;
+        case 'h': return p1[5];
+        break;
+        case 'sd': return p1[6];
+        break;
+        case 'bg': return p1[7];
+        break;
+      }
+      break;
+    case 2:
+      switch (animal) {
+        case 'r': return p2[1];
+        break;
+        case 's': return p2[2];
+        break;
+        case 'p': return p2[3];
+        break;
+        case 'c': return p2[4];
+        break;
+        case 'h': return p2[5];
+        break;
+        case 'sd': return p2[6];
+        break;
+        case 'bg': return p2[7];
+        break;
+      }
+      break;
+    case 3:
+      switch (animal) {
+        case 'r': return p3[1];
+        break;
+        case 's': return p3[2];
+        break;
+        case 'p': return p3[3];
+        break;
+        case 'c': return p3[4];
+        break;
+        case 'h': return p3[5];
+        break;
+        case 'sd': return p3[6];
+        break;
+        case 'bg': return p3[7];
+        break;
+      }
+      break;
+    case 4:
+      switch (animal) {
+        case 'r': return p4[1];
+        break;
+        case 's': return p4[2];
+        break;
+        case 'p': return p4[3];
+        break;
+        case 'c': return p4[4];
+        break;
+        case 'h': return p4[5];
+        break;
+        case 'sd': return p4[6];
+        break;
+        case 'bg': return p4[7];
+        break;
+      }
+    break;
+  }
+  }
 
 function addanimal(player,animal,q){
   switch (player) {
