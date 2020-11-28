@@ -15,7 +15,7 @@ body{
 
     ". D1 D2 R ."
 
-    "P3 . . . P4"
+    "P3 Z Z Z P4"
 }
 
 .P1 {
@@ -30,6 +30,11 @@ body{
 .P4 {
     grid-area: P4;  border: solid;
 }
+
+.Z {
+    grid-area: Z;  border: white; padding:20px;
+}
+
 .D1 {
   grid-area: D1;
   display: flex;

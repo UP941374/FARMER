@@ -1,4 +1,4 @@
-let sv=0; //starting animal value
+let sv=2; //starting animal value
 let foxonly=false; //play with fox-only dice
 let wolfonly=false; //play with wolf-only dice
 
@@ -344,9 +344,64 @@ function addanimal(player,animal,q){
   }
 }
 
+function drawanimals(player){
+  let size = 50;
+  barn = document.getElementById("barn");
+  barn.textContent = '';
+  let totalanimals = 0;
+  switch (player) {
+    case 1:  for (var i = 1; i < p1.length; i++) {
+      totalanimals = totalanimals + p1[i];
+    }
+    for (var i = 0; i < totalanimals; i++) {
+      let elem = document.createElement("img");
+      elem.src= "media/rabbit.jpg";
+      elem.height=size;
+      elem.width=size;
+      barn.appendChild(elem);
+    }
+    break;
+    case 2:  for (var i = 1; i < p2.length; i++) {
+      totalanimals = totalanimals + p2[i];
+    }
+    for (var i = 0; i < totalanimals; i++) {
+      let elem = document.createElement("img");
+      elem.src= "media/rabbit.jpg";
+      elem.height=size;
+      elem.width=size;
+      barn.appendChild(elem);
+    }
+    break;
+    case 3:  for (var i = 1; i < p3.length; i++) {
+      totalanimals = totalanimals + p3[i];
+    }
+    for (var i = 0; i < totalanimals; i++) {
+      let elem = document.createElement("img");
+      elem.src= "media/rabbit.jpg";
+      elem.height=size;
+      elem.width=size;
+      barn.appendChild(elem);
+    }
+    break;
+    case 4:  for (var i = 1; i < p4.length; i++) {
+      totalanimals = totalanimals + p4[i];
+    }
+    for (var i = 0; i < totalanimals; i++) {
+      let elem = document.createElement("img");
+      elem.src= "media/rabbit.jpg";
+      elem.height=size;
+      elem.width=size;
+      barn.appendChild(elem);
+    }
+    break;
+  }
+
+}
+
 function updatescreen(){
   displayvalues();
   whichplayer();
+  drawanimals(turn)
 };
 
 updatescreen();
