@@ -1,0 +1,44 @@
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  height:100vh;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0px 0px;
+  grid-template-areas:
+    "P1 . . . P2"
+
+    ". D1 . D2 ."
+
+    "P3 . . . P4"
+}
+
+.P1 {
+    grid-area: P1;  border: solid;
+}
+.P2 {
+    grid-area: P2;  border: solid;
+ }
+.P3 {
+    grid-area: P3;  border: solid;
+}
+.P4 {
+    grid-area: P4;  border: solid;
+}
+.D1 {
+    grid-area: D1;  border: solid;
+}
+
+.D2 {
+    grid-area: D2;  border: solid;
+}
+
+p {
+  font-size: 12px;
+  padding: 0;
+}
