@@ -1,4 +1,4 @@
-let sv=2; //starting animal value
+let sv=0; //starting animal value
 let foxonly=false; //play with fox-only dice
 let wolfonly=false; //play with wolf-only dice
 
@@ -87,32 +87,38 @@ function loadgraphic(dice,image){
 };
 
 function whichplayer(){
+  document.querySelector('.P1').style.border='solid #FFFFFF';
+  document.querySelector('.P2').style.border='solid #FFFFFF';
+  document.querySelector('.P3').style.border='solid #FFFFFF';
+  document.querySelector('.P4').style.border='solid #FFFFFF';
+  document.getElementById('p1trade').style.visibility='hidden';
+  document.getElementById('p2trade').style.visibility='hidden';
+  document.getElementById('p3trade').style.visibility='hidden';
+  document.getElementById('p4trade').style.visibility='hidden';
   switch (turn) {
     case 1:
     document.querySelector('.P1').style.border='solid #00FF00';
-    document.querySelector('.P2').style.border='solid #FFFFFF';
-    document.querySelector('.P3').style.border='solid #FFFFFF';
-    document.querySelector('.P4').style.border='solid #FFFFFF';
+    document.getElementById('p1trade').style.visibility='visible';
       break;
     case 2:
-    document.querySelector('.P1').style.border='solid #FFFFFF';
     document.querySelector('.P2').style.border='solid #00FF00';
-    document.querySelector('.P3').style.border='solid #FFFFFF';
-    document.querySelector('.P4').style.border='solid #FFFFFF';
+    document.getElementById('p2trade').style.visibility='visible';
       break;
     case 3:
-    document.querySelector('.P1').style.border='solid #FFFFFF';
-    document.querySelector('.P2').style.border='solid #FFFFFF';
     document.querySelector('.P3').style.border='solid #00FF00';
-    document.querySelector('.P4').style.border='solid #FFFFFF';
+    document.getElementById('p3trade').style.visibility='visible';
       break;
     case 4:
-    document.querySelector('.P1').style.border='solid #FFFFFF';
-    document.querySelector('.P2').style.border='solid #FFFFFF';
-    document.querySelector('.P3').style.border='solid #FFFFFF';
     document.querySelector('.P4').style.border='solid #00FF00';
+    document.getElementById('p4trade').style.visibility='visible';
       break;
   }
+};
+
+function tradedisplay(x){
+  let div = document.getElementById('trade');
+  let player = selectplayer(x.id);
+  div.textContent = player[0] + ' trading...';
 };
 
 function nextplayer(x){
@@ -122,20 +128,27 @@ function nextplayer(x){
   }
 };
 
+function selectplayer(x){
+  switch (x) {
+    case 'p1trade':
+      return p1
+      break;
+    case 'p2trade':
+      return p2
+      break;
+    case 'p3trade':
+      return p3
+      break;
+    case 'p4trade':
+      return p4
+      break;
+  }
+};
+
 function parseroll(player,res){
   let res1 = res.d1;
   let res2 = res.d2;
   let animal = 0;
-
-  if (res1 === 'w' && findanimals(player,'bg') >= 1) {
-    addanimal(player,'bg',-1);
-    return;
-  }
-
-  if (res2 === 'f' && findanimals(player,'sd') >= 1) {
-    addanimal(player,'sd',-1);
-    return;
-  }
 
   if (res1 === 'w') {
     addanimal(player,'r',-findanimals(player,'r'))
@@ -187,6 +200,16 @@ function parseroll(player,res){
    animal = findanimals(player,'h');
    addanimal(turn,'h', Math.floor((animal+1)/2));
   };
+
+  if (res1 === 'w' && findanimals(player,'bg') >= 1) {
+    addanimal(player,'bg',-1);
+    return;
+  }
+
+  if (res2 === 'f' && findanimals(player,'sd') >= 1) {
+    addanimal(player,'sd',-1);
+    return;
+  }
 
 };
 
