@@ -1,6 +1,7 @@
 let sv=0; //starting animal value
 let foxonly=false; //play with fox-only dice
 let wolfonly=false; //play with wolf-only dice
+let godmode=false;
 
 let p1 = [n='Arek',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
 let p2 = [n='Julia',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
@@ -8,9 +9,15 @@ let p3 = [n='Kamil',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
 let p4 = [n='Ola',r=sv,s=sv,p=sv,c=sv,h=sv,sd=sv,bg=sv];
 
 let turn = 1;
+let players = 4;
 
 let dice1 = ['r','r','r','r','r','r','s','s','s','p','c','w'];
 let dice2 = ['r','r','r','r','r','r','s','s','p','p','h','f'];
+
+// RABBIT, SHEEP, PIG, COW, HORSE, SMALL DOG, BIG DOG
+//set animal limit
+let animals = [60-sv*players,24-sv*players,20-sv*players,12-sv*players,4-sv*players,4-sv*players,2-sv*players]
+const animalsgraphics = ["media/rabbit.jpg", "media/sheep.jpg", "media/pig.jpg", "media/cow.jpg", "media/horse.jpg", "media/smalldog.jpg", "media/bigdog.jpg"];
 
 if (foxonly === true) {
   dice2 = ['f','f','f','f','f','f','f','f','f','f','f','f']
@@ -18,6 +25,11 @@ if (foxonly === true) {
 
 if (wolfonly === true) {
   dice1 = ['w','w','w','w','w','w','w','w','w','w','w','w']
+}
+
+if (godmode === true) {
+  dice1 = ['r','r','r','r','r','s','s','s','s','p','c','c'];
+  dice2 = ['r','r','r','r','r','s','s','s','s','p','h','h'];
 }
 
 function displayvalues(){
@@ -294,137 +306,297 @@ function addanimal(player,animal,q){
   switch (player) {
     case 1:
       switch (animal) {
-        case 'r': p1[1]=p1[1]+q;
+        case 'r':
+          if (animals[0] < q) {
+           p1[1]=p1[1] + animals[0];
+           animals[0]=animals[0]-animals[0];
+         } else {
+          p1[1]=p1[1]+q;
+          animals[0]=animals[0]-q;
+        }
         break;
-        case 's': p1[2]=p1[2]+q;
+        case 's':
+        if (animals[1] < q) {
+         p1[2]=p1[2] + animals[1];
+         animals[1]=animals[1]-animals[1];
+       } else {
+        p1[2]=p1[2]+q;
+        animals[1]=animals[1]-q;
+      }
         break;
-        case 'p': p1[3]=p1[3]+q;
+        case 'p':
+        if (animals[2] < q) {
+         p1[3]=p1[3] + animals[2];
+         animals[2]=animals[2]-animals[2];
+       } else {
+        p1[3]=p1[3]+q;
+        animals[2]=animals[2]-q;
+      }
         break;
-        case 'c': p1[4]=p1[4]+q;
+        case 'c':
+        if (animals[3] < q) {
+         p1[4]=p1[4] + animals[3];
+         animals[3]=animals[3]-animals[3];
+       } else {
+        p1[4]=p1[4]+q;
+        animals[3]=animals[3]-q;
+      }
         break;
-        case 'h': p1[5]=p1[5]+q;
+        case 'h':
+        if (animals[4] < q) {
+         p1[5]=p1[5] + animals[4];
+         animals[4]=animals[4]-animals[4];
+       } else {
+        p1[5]=p1[5]+q;
+        animals[4]=animals[4]-q;
+      }
         break;
-        case 'sd': p1[6]=p1[6]+q;
+        case 'sd':
+        if (animals[5] < q) {
+         p1[6]=p1[6] + animals[5];
+         animals[5]=animals[5]-animals[5];
+       } else {
+        p1[6]=p1[6]+q;
+        animals[5]=animals[5]-q;
+      }
         break;
-        case 'bg': p1[7]=p1[7]+q;
+        case 'bg':
+        if (animals[6] < q) {
+         p1[7]=p1[7] + animals[6];
+         animals[6]=animals[6]-animals[6];
+       } else {
+        p1[7]=p1[7]+q;
+        animals[6]=animals[6]-q;
+      }
         break;
       }
       break;
     case 2:
-      switch (animal) {
-        case 'r': p2[1]=p2[1]+q;
-        break;
-        case 's': p2[2]=p2[2]+q;
-        break;
-        case 'p': p2[3]=p2[3]+q;
-        break;
-        case 'c': p2[4]=p2[4]+q;
-        break;
-        case 'h': p2[5]=p2[5]+q;
-        break;
-        case 'sd': p2[6]=p2[6]+q;
-        break;
-        case 'bg': p2[7]=p2[7]+q;
-        break;
+    switch (animal) {
+      case 'r':
+        if (animals[0] < q) {
+         p2[1]=p2[1] + animals[0];
+         animals[0]=animals[0]-animals[0];
+       } else {
+        p2[1]=p2[1]+q;
+        animals[0]=animals[0]-q;
       }
       break;
+      case 's':
+      if (animals[1] < q) {
+       p2[2]=p2[2] + animals[1];
+       animals[1]=animals[1]-animals[1];
+     } else {
+      p2[2]=p2[2]+q;
+      animals[1]=animals[1]-q;
+    }
+      break;
+      case 'p':
+      if (animals[2] < q) {
+       p2[3]=p2[3] + animals[2];
+       animals[2]=animals[2]-animals[2];
+     } else {
+      p2[3]=p2[3]+q;
+      animals[2]=animals[2]-q;
+    }
+      break;
+      case 'c':
+      if (animals[3] < q) {
+       p2[4]=p2[4] + animals[3];
+       animals[3]=animals[3]-animals[3];
+     } else {
+      p2[4]=p2[4]+q;
+      animals[3]=animals[3]-q;
+    }
+      break;
+      case 'h':
+      if (animals[4] < q) {
+       p2[5]=p2[5] + animals[4];
+       animals[4]=animals[4]-animals[4];
+     } else {
+      p2[5]=p2[5]+q;
+      animals[4]=animals[4]-q;
+    }
+      break;
+      case 'sd':
+      if (animals[5] < q) {
+       p2[6]=p2[6] + animals[5];
+       animals[5]=animals[5]-animals[5];
+     } else {
+      p2[6]=p2[6]+q;
+      animals[5]=animals[5]-q;
+    }
+      break;
+      case 'bg':
+      if (animals[6] < q) {
+       p2[7]=p2[7] + animals[6];
+       animals[6]=animals[6]-animals[6];
+     } else {
+      p2[7]=p2[7]+q;
+      animals[6]=animals[6]-q;
+    }
+      break;
+    }
+    break;
     case 3:
-      switch (animal) {
-        case 'r': p3[1]=p3[1]+q;
-        break;
-        case 's': p3[2]=p3[2]+q;
-        break;
-        case 'p': p3[3]=p3[3]+q;
-        break;
-        case 'c': p3[4]=p3[4]+q;
-        break;
-        case 'h': p3[5]=p3[5]+q;
-        break;
-        case 'sd': p3[6]=p3[6]+q;
-        break;
-        case 'bg': p3[7]=p3[7]+q;
-        break;
+    switch (animal) {
+      case 'r':
+        if (animals[0] < q) {
+         p3[1]=p3[1] + animals[0];
+         animals[0]=animals[0]-animals[0];
+       } else {
+        p3[1]=p3[1]+q;
+        animals[0]=animals[0]-q;
       }
       break;
+      case 's':
+      if (animals[1] < q) {
+       p3[2]=p3[2] + animals[1];
+       animals[1]=animals[1]-animals[1];
+     } else {
+      p3[2]=p3[2]+q;
+      animals[1]=animals[1]-q;
+    }
+      break;
+      case 'p':
+      if (animals[2] < q) {
+       p3[3]=p3[3] + animals[2];
+       animals[2]=animals[2]-animals[2];
+     } else {
+      p3[3]=p3[3]+q;
+      animals[2]=animals[2]-q;
+    }
+      break;
+      case 'c':
+      if (animals[3] < q) {
+       p3[4]=p3[4] + animals[3];
+       animals[3]=animals[3]-animals[3];
+     } else {
+      p3[4]=p3[4]+q;
+      animals[3]=animals[3]-q;
+    }
+      break;
+      case 'h':
+      if (animals[4] < q) {
+       p3[5]=p3[5] + animals[4];
+       animals[4]=animals[4]-animals[4];
+     } else {
+      p3[5]=p3[5]+q;
+      animals[4]=animals[4]-q;
+    }
+      break;
+      case 'sd':
+      if (animals[5] < q) {
+       p3[6]=p3[6] + animals[5];
+       animals[5]=animals[5]-animals[5];
+     } else {
+      p3[6]=p3[6]+q;
+      animals[5]=animals[5]-q;
+    }
+      break;
+      case 'bg':
+      if (animals[6] < q) {
+       p3[7]=p3[7] + animals[6];
+       animals[6]=animals[6]-animals[6];
+     } else {
+      p3[7]=p3[7]+q;
+      animals[6]=animals[6]-q;
+    }
+      break;
+    }
+    break;
     case 4:
-      switch (animal) {
-        case 'r': p4[1]=p4[1]+q;
-        break;
-        case 's': p4[2]=p4[2]+q;
-        break;
-        case 'p': p4[3]=p4[3]+q;
-        break;
-        case 'c': p4[4]=p4[4]+q;
-        break;
-        case 'h': p4[5]=p4[5]+q;
-        break;
-        case 'sd': p4[6]=p4[6]+q;
-        break;
-        case 'bg': p4[7]=p4[7]+q;
-        break;
+    switch (animal) {
+      case 'r':
+        if (animals[0] < q) {
+         p4[1]=p4[1] + animals[0];
+         animals[0]=animals[0]-animals[0];
+       } else {
+        p4[1]=p4[1]+q;
+        animals[0]=animals[0]-q;
       }
+      break;
+      case 's':
+      if (animals[1] < q) {
+       p4[2]=p4[2] + animals[1];
+       animals[1]=animals[1]-animals[1];
+     } else {
+      p4[2]=p4[2]+q;
+      animals[1]=animals[1]-q;
+    }
+      break;
+      case 'p':
+      if (animals[2] < q) {
+       p4[3]=p4[3] + animals[2];
+       animals[2]=animals[2]-animals[2];
+     } else {
+      p4[3]=p4[3]+q;
+      animals[2]=animals[2]-q;
+    }
+      break;
+      case 'c':
+      if (animals[3] < q) {
+       p4[4]=p4[4] + animals[3];
+       animals[3]=animals[3]-animals[3];
+     } else {
+      p4[4]=p4[4]+q;
+      animals[3]=animals[3]-q;
+    }
+      break;
+      case 'h':
+      if (animals[4] < q) {
+       p4[5]=p4[5] + animals[4];
+       animals[4]=animals[4]-animals[4];
+     } else {
+      p4[5]=p4[5]+q;
+      animals[4]=animals[4]-q;
+    }
+      break;
+      case 'sd':
+      if (animals[5] < q) {
+       p4[6]=p4[6] + animals[5];
+       animals[5]=animals[5]-animals[5];
+     } else {
+      p4[6]=p4[6]+q;
+      animals[5]=animals[5]-q;
+    }
+      break;
+      case 'bg':
+      if (animals[6] < q) {
+       p4[7]=p4[7] + animals[6];
+       animals[6]=animals[6]-animals[6];
+     } else {
+      p4[7]=p4[7]+q;
+      animals[6]=animals[6]-q;
+    }
+      break;
+    }
     break;
   }
 }
 
-function drawanimals(player){
-  let size = 50;
+function drawavailabledanimals(){
+  let size = 40;
+  let s = 0;
   barn = document.getElementById("barn");
-  barn.textContent = '';
-  let totalanimals = 0;
-  switch (player) {
-    case 1:  for (var i = 1; i < p1.length; i++) {
-      totalanimals = totalanimals + p1[i];
-    }
-    for (var i = 0; i < totalanimals; i++) {
+  barn.textContent = 'Rabbits:' + animals[0] + '  Sheep:' + animals[1] + '  Pigs:' + animals[2] + '  Cows:' + animals[3] + '  Horses:' + animals[4] + '  Small Dogs:' + animals[5] + '  Big Dogs:' + animals[6];
+  barn.appendChild(document.createElement("p"));
+  for (var animal of animals) {
+    for (var i = 0; i < animal; i++) {
       let elem = document.createElement("img");
-      elem.src= "media/rabbit.jpg";
+      elem.src= animalsgraphics[s];
       elem.height=size;
       elem.width=size;
       barn.appendChild(elem);
-    }
-    break;
-    case 2:  for (var i = 1; i < p2.length; i++) {
-      totalanimals = totalanimals + p2[i];
-    }
-    for (var i = 0; i < totalanimals; i++) {
-      let elem = document.createElement("img");
-      elem.src= "media/rabbit.jpg";
-      elem.height=size;
-      elem.width=size;
-      barn.appendChild(elem);
-    }
-    break;
-    case 3:  for (var i = 1; i < p3.length; i++) {
-      totalanimals = totalanimals + p3[i];
-    }
-    for (var i = 0; i < totalanimals; i++) {
-      let elem = document.createElement("img");
-      elem.src= "media/rabbit.jpg";
-      elem.height=size;
-      elem.width=size;
-      barn.appendChild(elem);
-    }
-    break;
-    case 4:  for (var i = 1; i < p4.length; i++) {
-      totalanimals = totalanimals + p4[i];
-    }
-    for (var i = 0; i < totalanimals; i++) {
-      let elem = document.createElement("img");
-      elem.src= "media/rabbit.jpg";
-      elem.height=size;
-      elem.width=size;
-      barn.appendChild(elem);
-    }
-    break;
+   }
+    s++;
   }
-
-}
+};
 
 function updatescreen(){
   displayvalues();
   whichplayer();
-  drawanimals(turn)
+  drawavailabledanimals();
 };
 
 updatescreen();

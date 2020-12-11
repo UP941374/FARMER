@@ -7,56 +7,55 @@
 </head>
 
 <body>
-  <div class="grid-container">
-    <div class="P1">
-     Player: <span class='player' id="p1name"></span><p>
-     Rabbit:  <span id="p1r" ></span><p>
-     Sheep:  <span id="p1s" ></span><p>
-     Pig: <span id="p1p" ></span><p>
-     Cow: <span id="p1c" ></span><p>
-     Horse: <span id="p1h" ></span><p>
-     Small Dog: <span id="p1sd" ></span><p>
-     Big Dog: <span id="p1bd" ></span>
-    <div class='trade'> <button  id="p1trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
+    <div class="grid-container">
+      <div class="P1">
+       Player: <span class='player' id="p1name"></span><p>
+       Rabbit:  <span id="p1r" ></span><p>
+       Sheep:  <span id="p1s" ></span><p>
+       Pig: <span id="p1p" ></span><p>
+       Cow: <span id="p1c" ></span><p>
+       Horse: <span id="p1h" ></span><p>
+       Small Dog: <span id="p1sd" ></span><p>
+       Big Dog: <span id="p1bd" ></span>
+      <div class='trade'> <button  id="p1trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
+      </div>
+      <div id='trade' class="T"></div>
+      <div class="P2">
+       Player:  <span class='player' id="p2name" ></span><p>
+       Rabbit:  <span id="p2r" ></span><p>
+       Sheep:  <span id="p2s" ></span><p>
+       Pig: <span id="p2p" ></span><p>
+       Cow: <span id="p2c" ></span><p>
+       Horse: <span id="p2h" ></span><p>
+       Small Dog: <span id="p2sd" ></span><p>
+       Big Dog: <span id="p2bd" ></span><p>
+      <div class='trade'> <button  id="p2trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
+      </div>
+      <div class="P3">
+       Player:  <span class='player' id="p3name" ></span><p>
+       Rabbit:  <span id="p3r" ></span><p>
+       Sheep:  <span id="p3s" ></span><p>
+       Pig: <span id="p3p" ></span><p>
+       Cow: <span id="p3c" ></span><p>
+       Horse: <span id="p3h" ></span><p>
+       Small Dog: <span id="p3sd" ></span><p>
+       Big Dog: <span id="p3bd" ></span><p>
+      <div class='trade'> <button  id="p3trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
+      </div>
+      <div id='barn' class="Z"></div>
+      <div class="P4">
+       Player:  <span class='player' id="p4name" ></span><p>
+       Rabbit:  <span id="p4r" ></span><p>
+       Sheep:  <span id="p4s" ></span><p>
+       Pig: <span id="p4p" ></span><p>
+       Cow: <span id="p4c" ></span><p>
+       Horse: <span id="p4h" ></span><p>
+       Small Dog: <span id="p4sd" ></span><p>
+       Big Dog: <span id="p4bd" ></span><p>
+       <div class='trade'> <button  id="p4trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
+      </div>
+      <div class="D1"><span id="dice1"> </span></div>
+      <div class="D2"><span id="dice2"> </span></div>
+      <div class="R">  <button class= 'button' id='btnrolldice' onclick="rolldice()">ROLL</button>   <button class= 'button' id='btnendround' onclick="endround()" disabled>END ROUND</button>   </div>
     </div>
-    <div id='trade' class="T"></div>
-    <div class="P2">
-     Player:  <span class='player' id="p2name" ></span><p>
-     Rabbit:  <span id="p2r" ></span><p>
-     Sheep:  <span id="p2s" ></span><p>
-     Pig: <span id="p2p" ></span><p>
-     Cow: <span id="p2c" ></span><p>
-     Horse: <span id="p2h" ></span><p>
-     Small Dog: <span id="p2sd" ></span><p>
-     Big Dog: <span id="p2bd" ></span><p>
-    <div class='trade'> <button  id="p2trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
-    </div>
-    <div class="P3">
-     Player:  <span class='player' id="p3name" ></span><p>
-     Rabbit:  <span id="p3r" ></span><p>
-     Sheep:  <span id="p3s" ></span><p>
-     Pig: <span id="p3p" ></span><p>
-     Cow: <span id="p3c" ></span><p>
-     Horse: <span id="p3h" ></span><p>
-     Small Dog: <span id="p3sd" ></span><p>
-     Big Dog: <span id="p3bd" ></span><p>
-    <div class='trade'> <button  id="p3trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
-    </div>
-    <div id='barn' class="Z"></div>
-    <div class="P4">
-     Player:  <span class='player' id="p4name" ></span><p>
-     Rabbit:  <span id="p4r" ></span><p>
-     Sheep:  <span id="p4s" ></span><p>
-     Pig: <span id="p4p" ></span><p>
-     Cow: <span id="p4c" ></span><p>
-     Horse: <span id="p4h" ></span><p>
-     Small Dog: <span id="p4sd" ></span><p>
-     Big Dog: <span id="p4bd" ></span><p>
-     <div class='trade'> <button  id="p4trade" type="button" onclick="tradedisplay(this)">TRADE</button> </div>
-    </div>
-    <div class="D1"><span id="dice1"> </span></div>
-    <div class="D2"><span id="dice2"> </span></div>
-    <div class="R">  <button class= 'button' id='btnrolldice' onclick="rolldice()">ROLL</button>   <button class= 'button' id='btnendround' onclick="endround()" disabled>END ROUND</button>   </div>
-  </div>
-
 </body>
